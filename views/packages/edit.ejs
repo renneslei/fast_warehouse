@@ -1,0 +1,45 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<form action="/packages/<%= package._id %>?_method=PUT" method="POST">
+		<table class="table table-striped">
+			<caption>这里修改包裹信息</caption>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Customer</th>
+					<th>Tracking</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody>
+					<tr>
+						<th>
+							<input class="form-control" type="text" name="package[id]" value="<%= package.id %>">
+						</th>
+						<th>
+							<input class="form-control" type="text" name="package[customer]" value="<%= package.customer %>">	
+						</th>
+						<th>
+							<input class="form-control" type="text" name="package[tracking]" value="<%= package.tracking %>">	
+						</th>
+						<th>
+							<input class="form-control" type="text" name="package[description]" value="<%= package.description %>">	
+						</th>
+						<th>
+							<button class="btn btn-primary btn-default">
+								Submit!
+							</button>	
+						</th>
+					</tr>
+			</tbody>
+		</table>
+	</form>
+
+	<a href="/packages">Go back!</a>
+	
+</div>
+
+
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,49 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>快速仓储管理系统</h1>
+			<p>快速 稳定 经济</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="/packages/new">添加新包裹</a>
+			</p>
+		</div>
+	</header>
+	
+<table class="table table-striped">
+    <caption>所有包裹数据</caption>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+			<th>Tracking</th>
+			<th>录单人</th>
+        </tr>
+    </thead>
+    <tbody>
+		<% packages.forEach (function(package){ %>
+			<tr>
+				<th>
+					<%= package.id %>	
+				</th>
+				<th>
+					<%= package.customer %>	
+				</th>
+				<th>
+					<%= package.tracking %>	
+				</th>
+				<th>
+					<%= package.author.username %>	
+				</th>
+				<th>
+					<a href="/packages/<%= package._id %>" class="btn btn-primary btn-sm">更多信息</a>	
+				</th>
+			</tr>
+		<% }) %>
+    </tbody>
+</table>
+		
+</div>
+	
+<%- include("../partials/footer") %>

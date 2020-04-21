@@ -1,0 +1,46 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+
+	<form action="/packages" method="POST">
+		<table class="table table-striped">
+			<caption>这里添加包裹信息</caption>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Customer</th>
+					<th>Tracking</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody>
+					<tr>
+						<th>
+							<input class="form-control" type="text" name="id" placeholder="id">
+						</th>
+						<th>
+							<input class="form-control" type="text" name="customer" placeholder="customer">	
+						</th>
+						<th>
+							<input class="form-control" type="text" name="tracking" placeholder="tracking">	
+						</th>
+						<th>
+							<input class="form-control" type="text" name="description" placeholder="备注包裹信息">	
+						</th>
+						<th>
+							<button class="btn btn-primary btn-default">
+								Submit!
+							</button>	
+						</th>
+					</tr>
+			</tbody>
+		</table>
+	</form>
+
+	<a href="/packages">Go back!</a>
+	
+</div>
+
+
+
+<%- include("../partials/footer") %>

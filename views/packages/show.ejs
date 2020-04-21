@@ -1,0 +1,78 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<p class="lead">
+				原箱转运
+			</p>
+			<div class="list-group">
+				
+				<li class="list-group-item active">包裹信息</li>
+				<li class="list-group-item">发出库入库</li>
+				<li class="list-group-item">发出库出库</li>
+				<li class="list-group-item">目的仓收货</li>
+				<li class="list-group-item">目的仓上架</li>
+				<li class="list-group-item">目的仓下架</li>
+				<li class="list-group-item">目的仓出库</li>
+				<li class="list-group-item">付费充值</li>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<table class="table table-striped">
+				<caption>所有包裹数据</caption>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Customer</th>
+						<th>Tracking</th>
+						<th>备注</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr>
+							<th>
+								<%= package.id %>	
+							</th>
+							<th>
+								<%= package.customer %>	
+							</th>
+							<th>
+								<%= package.tracking %>	
+							</th>
+							<th>
+								<%= package.description %>		
+							</th>
+							<th>
+								<a class="btn btn-sm btn-success" href="/packages/<%= package._id %>/comments/new">添加评论</a>	
+								<% if(currentUser && package.author.id.equals(currentUser._id)){ %>
+									<a class="btn btn-sm btn-success" href="/packages/<%= package._id %>/edit">编辑</a>	
+									<form class="delete-form" action="/packages/<%= package._id %>?_method=DELETE" method="POST">
+										<button class="btn btn-sm btn-danger">
+											删除
+										</button>
+									</form>
+								<% } %>
+							</th>
+						</tr>
+				</tbody>
+			</table>
+			
+			<% package.comments.forEach(function(comment){ %>
+				<p><strong><%= comment.author.username %></strong> - <%= comment.text %></p>
+				<% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+					<a class="btn btn-xs btn-success" href="/packages/<%= package._id %>/comments/<%= comment._id %>/edit">编辑</a>
+					<form class="delete-form" action="/packages/<%= package._id %>/comments/<%= comment._id %>?_method=DELETE", method="POST">
+						<button class="btn btn-xs btn-danger">
+							删除
+						</button>
+					</form>	
+				<% } %>
+			<% }) %>	
+		</div>
+	</div>
+</div>
+
+
+<%- include("../partials/footer") %>
