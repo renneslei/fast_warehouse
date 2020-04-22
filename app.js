@@ -11,7 +11,10 @@ var Comment		     = require("./models/comment");
 var User			 = require("./models/user");
 var seedDB           = require("./seeds")
 
-mongoose.connect("mongodb://localhost/fast_warehouse", {useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect("mongodb://localhost/fast_warehouse", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://Peter:123@xx@cluster0-lfvad.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true});
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
